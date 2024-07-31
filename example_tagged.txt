@@ -1,0 +1,2 @@
+c|3|hard,science
+d|4|hard
