@@ -53,28 +53,28 @@ fun stringToTaggedFlashCard(fcString: String): TaggedFlashCard {
     return TaggedFlashCard(splitString[0], splitString[1], splitString[2].split(sepTag))
 }
 
-// @EnabledTest
-// fun testStringToTaggedFlashCard() {
+@EnabledTest
+fun testStringToTaggedFlashCard() {
 
-//     testSame(
-//         stringToTaggedFlashCard("||"),
-//         TaggedFlashCard("", "", listOf("")),
-//         "all empty",
-//     )
+    testSame(
+        stringToTaggedFlashCard("||"),
+        TaggedFlashCard("", "", listOf("")),
+        "all empty",
+    )
 
-//     testSame(
-//         stringToTaggedFlashCard("front|back|"),
-//         TaggedFlashCard("front", "back", listOf("")),
-//         "empty tags",
-//     )
+    testSame(
+        stringToTaggedFlashCard("front|back|"),
+        TaggedFlashCard("front", "back", listOf("")),
+        "empty tags",
+    )
 
-//     testSame(
-//         stringToTaggedFlashCard("front|back|1,2,3"),
-//         TaggedFlashCard("front", "back", listOf("1", "2", "3")),
-//         "front back 123",
-//     )
+    testSame(
+        stringToTaggedFlashCard("front|back|1,2,3"),
+        TaggedFlashCard("front", "back", listOf("1", "2", "3")),
+        "front back 123",
+    )
 
-// }
+}
 
 // checks whether the filename as a string is valid and if it is takes the contents
 // of the file and makes a corresponding flashcard list
@@ -87,23 +87,23 @@ fun readTaggedFlashCardsFile(fileName: String): List<TaggedFlashCard> {
     }
 }
 
-// @EnabledTest
-// fun testReadTaggedFlashCardsFile() {
-//     val tfcC3 = TaggedFlashCard("c", "3", listOf("hard", "science"))
-//     val tfcD4 = TaggedFlashCard("d", "4", listOf("hard"))
-//     testSame(
-//         readTaggedFlashCardsFile("BADFILE.exe"),
-//         listOf(),
-//         "empty tags",
-//     )
+@EnabledTest
+fun testReadTaggedFlashCardsFile() {
+    val tfcC3 = TaggedFlashCard("c", "3", listOf("hard", "science"))
+    val tfcD4 = TaggedFlashCard("d", "4", listOf("hard"))
+    testSame(
+        readTaggedFlashCardsFile("BADFILE.exe"),
+        listOf(),
+        "empty tags",
+    )
 
-//     testSame(
-//         readTaggedFlashCardsFile("example_tagged.txt"),
-//         listOf(tfcC3, tfcD4),
-//         "front back 123",
-//     )
+    testSame(
+        readTaggedFlashCardsFile("example_tagged.txt"),
+        listOf(tfcC3, tfcD4),
+        "front back 123",
+    )
 
-// }
+}
 
 // The deck is either exhausted,
 // showing the question, or
@@ -191,107 +191,107 @@ val tfcListDeckFront = TFCListDeck(tfcListAll, true)
 val tfcListDeckBack = TFCListDeck(tfcListCB, false)
 val tfcListDeckEmpty = TFCListDeck(tfcListEmpty, true)
 
-// @EnabledTest
-// fun testTFCListDeckGetState() {
+@EnabledTest
+fun testTFCListDeckGetState() {
 
-//     testSame(
-//         tfcListDeckFront.getState(),
-//         DeckState.QUESTION,
-//         "question",
-//     )
+    testSame(
+        tfcListDeckFront.getState(),
+        DeckState.QUESTION,
+        "question",
+    )
 
-//     testSame(
-//         tfcListDeckBack.getState(),
-//         DeckState.ANSWER,
-//         "answer",
-//     )
+    testSame(
+        tfcListDeckBack.getState(),
+        DeckState.ANSWER,
+        "answer",
+    )
 
-//     testSame(
-//         tfcListDeckEmpty.getState(),
-//         DeckState.EXHAUSTED,
-//         "exhausted",
-//     )
-// }
+    testSame(
+        tfcListDeckEmpty.getState(),
+        DeckState.EXHAUSTED,
+        "exhausted",
+    )
+}
 
-// @EnabledTest
-// fun testTFCListDeckGetText() {
+@EnabledTest
+fun testTFCListDeckGetText() {
 
-//     testSame(
-//         tfcListDeckFront.getText(),
-//         qJP,
-//         "JP front text",
-//     )
+    testSame(
+        tfcListDeckFront.getText(),
+        qJP,
+        "JP front text",
+    )
 
-//     testSame(
-//         tfcListDeckBack.getText(),
-//         aCB,
-//         "CB back text",
-//     )
+    testSame(
+        tfcListDeckBack.getText(),
+        aCB,
+        "CB back text",
+    )
 
-//     testSame(
-//         tfcListDeckEmpty.getText(),
-//         null,
-//         "empty & null",
-//     )
-// }
+    testSame(
+        tfcListDeckEmpty.getText(),
+        null,
+        "empty & null",
+    )
+}
 
-// @EnabledTest
-// fun testTFCListDeckGetSize() {
+@EnabledTest
+fun testTFCListDeckGetSize() {
 
-//     testSame(
-//         tfcListDeckFront.getSize(),
-//         4,
-//         "3 tfc",
-//     )
+    testSame(
+        tfcListDeckFront.getSize(),
+        4,
+        "3 tfc",
+    )
 
-//     testSame(
-//         tfcListDeckBack.getSize(),
-//         1,
-//         "1 tfc",
-//     )
+    testSame(
+        tfcListDeckBack.getSize(),
+        1,
+        "1 tfc",
+    )
 
-//     testSame(
-//         tfcListDeckEmpty.getSize(),
-//         0,
-//         "empty",
-//     )
-// }
+    testSame(
+        tfcListDeckEmpty.getSize(),
+        0,
+        "empty",
+    )
+}
 
-// @EnabledTest
-// fun testTFCListDeckFlip() {
-//     testSame(
-//         TFCListDeck(tfcListCB, true).flip(),
-//         TFCListDeck(tfcListCB, false),
-//         "front -> back",
-//     )
+@EnabledTest
+fun testTFCListDeckFlip() {
+    testSame(
+        TFCListDeck(tfcListCB, true).flip(),
+        TFCListDeck(tfcListCB, false),
+        "front -> back",
+    )
 
-//     testSame(
-//         TFCListDeck(tfcListAll, false).flip(),
-//         TFCListDeck(tfcListAll, false),
-//         "back -> back",
-//     )
-// }
+    testSame(
+        TFCListDeck(tfcListAll, false).flip(),
+        TFCListDeck(tfcListAll, false),
+        "back -> back",
+    )
+}
 
-// @EnabledTest
-// fun testTFCListDeckNext() {
-//     testSame(
-//         TFCListDeck(tfcListCB, false).next(true),
-//         TFCListDeck(tfcListCB.drop(1), true),
-//         "front -> next back (correct)",
-//     )
+@EnabledTest
+fun testTFCListDeckNext() {
+    testSame(
+        TFCListDeck(tfcListCB, false).next(true),
+        TFCListDeck(tfcListCB.drop(1), true),
+        "front -> next back (correct)",
+    )
 
-//     testSame(
-//         TFCListDeck(tfcListCB, false).next(false),
-//         TFCListDeck(tfcListCB.drop(1) + tfcListCB.first(), true),
-//         "front -> next back (incorrect)",
-//     )
+    testSame(
+        TFCListDeck(tfcListCB, false).next(false),
+        TFCListDeck(tfcListCB.drop(1) + tfcListCB.first(), true),
+        "front -> next back (incorrect)",
+    )
 
-//     testSame(
-//         TFCListDeck(listOf(tfcJP, tfcCB), false).next(false),
-//         TFCListDeck(listOf(tfcCB, tfcJP), true),
-//         "front -> next back (incorrect, list size 2)",
-//     )
-// }
+    testSame(
+        TFCListDeck(listOf(tfcJP, tfcCB), false).next(false),
+        TFCListDeck(listOf(tfcCB, tfcJP), true),
+        "front -> next back (incorrect, list size 2)",
+    )
+}
 
 // takes in a list of tagged flashcards and a boolean which determines
 // whether the flashcard is on the front utilizing the IDeck interface
@@ -337,101 +337,101 @@ val perfectSquaresDeckFront3 = PerfectSquaresDeck(3, true, listOf(1, 2, 3))
 val perfectSquaresDeckBack3 = PerfectSquaresDeck(3, false, listOf(1, 2, 3))
 val perfectSquaresDeckEmpty = PerfectSquaresDeck(0, true, listOf())
 
-// @EnabledTest
-// fun testPerfectSquaredDeckGetState() {
+@EnabledTest
+fun testPerfectSquaredDeckGetState() {
 
-//     testSame(
-//         perfectSquaresDeckFront3.getState(),
-//         DeckState.QUESTION,
-//         "question",
-//     )
+    testSame(
+        perfectSquaresDeckFront3.getState(),
+        DeckState.QUESTION,
+        "question",
+    )
 
-//     testSame(
-//         perfectSquaresDeckBack3.getState(),
-//         DeckState.ANSWER,
-//         "answer",
-//     )
+    testSame(
+        perfectSquaresDeckBack3.getState(),
+        DeckState.ANSWER,
+        "answer",
+    )
 
-//     testSame(
-//         perfectSquaresDeckEmpty.getState(),
-//         DeckState.EXHAUSTED,
-//         "exhausted",
-//     )
-// }
+    testSame(
+        perfectSquaresDeckEmpty.getState(),
+        DeckState.EXHAUSTED,
+        "exhausted",
+    )
+}
 
-// @EnabledTest
-// fun testPerfectSquaredDeckGetText() {
+@EnabledTest
+fun testPerfectSquaredDeckGetText() {
 
-//     testSame(
-//         perfectSquaresDeckFront3.getText(),
-//         "3^2 = ?",
-//         "3 squared question",
-//     )
+    testSame(
+        perfectSquaresDeckFront3.getText(),
+        "3^2 = ?",
+        "3 squared question",
+    )
 
-//     testSame(
-//         perfectSquaresDeckBack3.getText(),
-//         "9",
-//         "3 squared answer",
-//     )
+    testSame(
+        perfectSquaresDeckBack3.getText(),
+        "9",
+        "3 squared answer",
+    )
 
-//     testSame(
-//         perfectSquaresDeckEmpty.getText(),
-//         null,
-//         "empty & null",
-//     )
-// }
+    testSame(
+        perfectSquaresDeckEmpty.getText(),
+        null,
+        "empty & null",
+    )
+}
 
-// @EnabledTest
-// fun testPerfectSquaredDeckGetSize() {
+@EnabledTest
+fun testPerfectSquaredDeckGetSize() {
 
-//     testSame(
-//         perfectSquaresDeckFront3.getSize(),
-//         3,
-//         "size 3 (front)",
-//     )
+    testSame(
+        perfectSquaresDeckFront3.getSize(),
+        3,
+        "size 3 (front)",
+    )
 
-//     testSame(
-//         perfectSquaresDeckBack3.getSize(),
-//         3,
-//         "size 3 (back)",
-//     )
+    testSame(
+        perfectSquaresDeckBack3.getSize(),
+        3,
+        "size 3 (back)",
+    )
 
-//     testSame(
-//         perfectSquaresDeckEmpty.getSize(),
-//         0,
-//         "empty list",
-//     )
-// }
+    testSame(
+        perfectSquaresDeckEmpty.getSize(),
+        0,
+        "empty list",
+    )
+}
 
-// @EnabledTest
-// fun testPerfectSquaredDeckFlip() {
-//     testSame(
-//         perfectSquaresDeckFront3.flip(),
-//         perfectSquaresDeckBack3,
-//         "front -> back",
-//     )
+@EnabledTest
+fun testPerfectSquaredDeckFlip() {
+    testSame(
+        perfectSquaresDeckFront3.flip(),
+        perfectSquaresDeckBack3,
+        "front -> back",
+    )
 
-//     testSame(
-//         perfectSquaresDeckBack3.flip(),
-//         perfectSquaresDeckBack3,
-//         "back -> back",
-//     )
-// }
+    testSame(
+        perfectSquaresDeckBack3.flip(),
+        perfectSquaresDeckBack3,
+        "back -> back",
+    )
+}
 
-// @EnabledTest
-// fun testPerfectSquaredDeckNext() {
-//     testSame(
-//         perfectSquaresDeckBack3.next(true),
-//         PerfectSquaresDeck(2, true, listOf(2, 3)),
-//         "correct",
-//     )
+@EnabledTest
+fun testPerfectSquaredDeckNext() {
+    testSame(
+        perfectSquaresDeckBack3.next(true),
+        PerfectSquaresDeck(2, true, listOf(2, 3)),
+        "correct",
+    )
 
-//     testSame(
-//         perfectSquaresDeckBack3.next(false),
-//         PerfectSquaresDeck(2, true, listOf(2, 3, 1)),
-//         "incorrect",
-//     )
-// }
+    testSame(
+        perfectSquaresDeckBack3.next(false),
+        PerfectSquaresDeck(2, true, listOf(2, 3, 1)),
+        "incorrect",
+    )
+}
 
 // the only required capability for a menu option
 // is to be able to render a title
@@ -515,63 +515,63 @@ fun <T : IMenuOption> chooseMenuOption(options: List<T>): T? {
     // - return the selected option (or null for quit)
 }
 
-// @EnabledTest
-// fun testChooseMenuOption() {
-//     testSame(
-//         captureResults(
-//             { chooseMenuOption(listOf(opt1A)) },
-//             "howdy",
-//             "0",
-//         ),
-//         CapturedResult(
-//             null,
-//             "1. ${opt1A.name}",
-//             "",
-//             menuPrompt,
-//             "1. ${opt1A.name}",
-//             "",
-//             menuPrompt,
-//             menuQuit,
-//         ),
-//         "quit",
-//     )
+@EnabledTest
+fun testChooseMenuOption() {
+    testSame(
+        captureResults(
+            { chooseMenuOption(listOf(opt1A)) },
+            "howdy",
+            "0",
+        ),
+        CapturedResult(
+            null,
+            "1. ${opt1A.name}",
+            "",
+            menuPrompt,
+            "1. ${opt1A.name}",
+            "",
+            menuPrompt,
+            menuQuit,
+        ),
+        "quit",
+    )
 
-//     testSame(
-//         captureResults(
-//             { chooseMenuOption(optsExample) },
-//             "hello",
-//             "10",
-//             "-3",
-//             "1",
-//         ),
-//         CapturedResult(
-//             opt1A,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "${menuChoicePrefix}${opt1A.name}",
-//         ),
-//         "1",
-//     )
+    testSame(
+        captureResults(
+            { chooseMenuOption(optsExample) },
+            "hello",
+            "10",
+            "-3",
+            "1",
+        ),
+        CapturedResult(
+            opt1A,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "${menuChoicePrefix}${opt1A.name}",
+        ),
+        "1",
+    )
 
-//     testSame(
-//         captureResults(
-//             { chooseMenuOption(optsExample) },
-//             "3",
-//             "-1",
-//             "2",
-//         ),
-//         CapturedResult(
-//             opt2B,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
-//             "${menuChoicePrefix}${opt2B.name}",
-//         ),
-//         "2",
-//     )
-// }
+    testSame(
+        captureResults(
+            { chooseMenuOption(optsExample) },
+            "3",
+            "-1",
+            "2",
+        ),
+        CapturedResult(
+            opt2B,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "1. ${opt1A.name}", "2. ${opt2B.name}", "", menuPrompt,
+            "${menuChoicePrefix}${opt2B.name}",
+        ),
+        "2",
+    )
+}
 
 
 typealias PositivityClassifier = (String) -> Boolean
@@ -631,27 +631,27 @@ fun helpTestElement(
     )
 }
 
-// @EnabledTest
-// fun testIsPositiveSimple() {
-//     val classifier = ::isPositiveSimple
+@EnabledTest
+fun testIsPositiveSimple() {
+    val classifier = ::isPositiveSimple
 
-//     // correctly responds with positive
-//     for (i in 0..1) {
-//         helpTestElement(i, true, classifier)
-//     }
+    // correctly responds with positive
+    for (i in 0..1) {
+        helpTestElement(i, true, classifier)
+    }
 
-//     // incorrectly responds with negative
-//     for (i in 2..8) {
-//         helpTestElement(i, false, classifier)
-//     }
+    // incorrectly responds with negative
+    for (i in 2..8) {
+        helpTestElement(i, false, classifier)
+    }
 
-//     // correctly responds with negative, sometimes
-//     // due to luck (i.e., anything not starting
-//     // with the letter Y is assumed negative)
-//     for (i in 9..17) {
-//         helpTestElement(i, true, classifier)
-//     }
-// }
+    // correctly responds with negative, sometimes
+    // due to luck (i.e., anything not starting
+    // with the letter Y is assumed negative)
+    for (i in 9..17) {
+        helpTestElement(i, true, classifier)
+    }
+}
 
 typealias EvaluationFunction<T> = (T) -> Int
 
@@ -683,29 +683,29 @@ fun <T> topK(
     return sortedWithoutScores.take(k)
 }
 
-// @EnabledTest
-// fun testTopK() {
-//     val emptyInts: List<Int> = listOf()
+@EnabledTest
+fun testTopK() {
+    val emptyInts: List<Int> = listOf()
 
-//     testSame(
-//         topK(emptyInts, 5, { it }),
-//         emptyInts,
-//         "empty",
-//     )
+    testSame(
+        topK(emptyInts, 5, { it }),
+        emptyInts,
+        "empty",
+    )
 
-//     testSame(
-//         topK(listOf(9, 8, 1, 3, 2, 0), 5, { -it }),
-//         listOf(0, 1, 2, 3, 8),
-//         "sort by low",
-//     )
+    testSame(
+        topK(listOf(9, 8, 1, 3, 2, 0), 5, { -it }),
+        listOf(0, 1, 2, 3, 8),
+        "sort by low",
+    )
 
-//     testSame(
-//         topK(listOf("abc", "abcd", "a", "ab"), 3, { it.length }),
-//         listOf("abcd", "abc", "ab"),
-//         "sort by char len",
-//     )
+    testSame(
+        topK(listOf("abc", "abcd", "a", "ab"), 3, { it.length }),
+        listOf("abcd", "abc", "ab"),
+        "sort by char len",
+    )
 
-// }
+}
 
 // calculates the minimum number of single-character edits
 // between the supplied strings
@@ -733,38 +733,38 @@ fun levenshteinDistance(
     }
 }
 
-// @EnabledTest
-// fun testLevenshteinDistance() {
-//     testSame(
-//         levenshteinDistance("", "howdy"),
-//         5,
-//         "'', 'howdy'",
-//     )
+@EnabledTest
+fun testLevenshteinDistance() {
+    testSame(
+        levenshteinDistance("", "howdy"),
+        5,
+        "'', 'howdy'",
+    )
 
-//     testSame(
-//         levenshteinDistance("howdy", ""),
-//         5,
-//         "'howdy', ''",
-//     )
+    testSame(
+        levenshteinDistance("howdy", ""),
+        5,
+        "'howdy', ''",
+    )
 
-//     testSame(
-//         levenshteinDistance("howdy", "howdy"),
-//         0,
-//         "'howdy', 'howdy'",
-//     )
+    testSame(
+        levenshteinDistance("howdy", "howdy"),
+        0,
+        "'howdy', 'howdy'",
+    )
 
-//     testSame(
-//         levenshteinDistance("kitten", "sitting"),
-//         3,
-//         "'kitten', 'sitting'",
-//     )
+    testSame(
+        levenshteinDistance("kitten", "sitting"),
+        3,
+        "'kitten', 'sitting'",
+    )
 
-//     testSame(
-//         levenshteinDistance("sitting", "kitten"),
-//         3,
-//         "'sitting', 'kitten'",
-//     )
-// }
+    testSame(
+        levenshteinDistance("sitting", "kitten"),
+        3,
+        "'sitting', 'kitten'",
+    )
+}
 
 
 typealias DistanceFunction<T> = (T, T) -> Int
@@ -806,28 +806,28 @@ fun <E, L> nnLabel(
     )
 }
 
-// @EnabledTest
-// fun testNNLabel() {
-//     val dataset =
-//         listOf(
-//             LabeledExample(2, "a"),
-//             LabeledExample(3, "a"),
-//             LabeledExample(7, "b"),
-//             LabeledExample(10, "b"),
-//         )
+@EnabledTest
+fun testNNLabel() {
+    val dataset =
+        listOf(
+            LabeledExample(2, "a"),
+            LabeledExample(3, "a"),
+            LabeledExample(7, "b"),
+            LabeledExample(10, "b"),
+        )
 
-//     fun myAbsVal(
-//         a: Int,
-//         b: Int,
-//     ): Int {
-//         val diff = a - b
+    fun myAbsVal(
+        a: Int,
+        b: Int,
+    ): Int {
+        val diff = a - b
 
-//         return when (diff >= 0) {
-//             true -> diff
-//             false -> -diff
-//         }
-//     }
-// }
+        return when (diff >= 0) {
+            true -> diff
+            false -> -diff
+        }
+    }
+}
 
 
 // we'll generally use k=3 in our classifier
@@ -847,57 +847,57 @@ fun yesNoClassifier(s: String): ResultWithVotes<Boolean> {
     return nnLabel(s, datasetYN, ::levenshteinDistance, classifierK)
 }
 
-// @EnabledTest
-// fun testYesNoClassifier() {
-//     testSame(
-//         yesNoClassifier("YES"),
-//         ResultWithVotes(true, 3),
-//         "YES: 3/3",
-//     )
+@EnabledTest
+fun testYesNoClassifier() {
+    testSame(
+        yesNoClassifier("YES"),
+        ResultWithVotes(true, 3),
+        "YES: 3/3",
+    )
 
-//     testSame(
-//         yesNoClassifier("no"),
-//         ResultWithVotes(false, 3),
-//         "no: 3/3",
-//     )
+    testSame(
+        yesNoClassifier("no"),
+        ResultWithVotes(false, 3),
+        "no: 3/3",
+    )
 
-//     testSame(
-//         yesNoClassifier("nadda"),
-//         ResultWithVotes(false, 2),
-//         "nadda: 2/3",
-//     )
+    testSame(
+        yesNoClassifier("nadda"),
+        ResultWithVotes(false, 2),
+        "nadda: 2/3",
+    )
 
-//     testSame(
-//         yesNoClassifier("yerp"),
-//         ResultWithVotes(true, 3),
-//         "yerp: 3/3",
-//     )
+    testSame(
+        yesNoClassifier("yerp"),
+        ResultWithVotes(true, 3),
+        "yerp: 3/3",
+    )
 
-//     testSame(
-//         yesNoClassifier("ouch"),
-//         ResultWithVotes(true, 3),
-//         "ouch: 3/3",
-//     )
+    testSame(
+        yesNoClassifier("ouch"),
+        ResultWithVotes(true, 3),
+        "ouch: 3/3",
+    )
 
-//     testSame(
-//         yesNoClassifier("now"),
-//         ResultWithVotes(false, 3),
-//         "now 3/3",
-//     )
-// }
+    testSame(
+        yesNoClassifier("now"),
+        ResultWithVotes(false, 3),
+        "now 3/3",
+    )
+}
 
 fun isPositiveML(s: String): Boolean = yesNoClassifier(s).label
 
-// @EnabledTest
-// fun testIsPositiveML() {
-//     for (i in 0..8) {
-//         helpTestElement(i, true, ::isPositiveML)
-//     }
+@EnabledTest
+fun testIsPositiveML() {
+    for (i in 0..8) {
+        helpTestElement(i, true, ::isPositiveML)
+    }
 
-//     for (i in 9..17) {
-//         helpTestElement(i, true, ::isPositiveML)
-//     }
-// }
+    for (i in 9..17) {
+        helpTestElement(i, true, ::isPositiveML)
+    }
+}
 
 
 // represents the result of a study session:
@@ -924,32 +924,32 @@ fun renderToText(studyState: StudyState): String {
     }
 }
 
-// @EnabledTest
-// fun testRenderToText() {
-//     testSame(
-//         renderToText(StudyState(tfcListDeckFront, 0)),
-//         "$qJP\n$studyThink",
-//         "question JP",
-//     )
+@EnabledTest
+fun testRenderToText() {
+    testSame(
+        renderToText(StudyState(tfcListDeckFront, 0)),
+        "$qJP\n$studyThink",
+        "question JP",
+    )
 
-//     testSame(
-//         renderToText(StudyState(tfcListDeckBack, 0)),
-//         "$aCB\n$studyCheck",
-//         "answer CB",
-//     )
+    testSame(
+        renderToText(StudyState(tfcListDeckBack, 0)),
+        "$aCB\n$studyCheck",
+        "answer CB",
+    )
 
-//     testSame(
-//         renderToText(StudyState(TFCListDeck(tfcListAll.drop(1), true), 0)),
-//         "$qCB\n$studyThink",
-//         "question CB",
-//     )
+    testSame(
+        renderToText(StudyState(TFCListDeck(tfcListAll.drop(1), true), 0)),
+        "$qCB\n$studyThink",
+        "question CB",
+    )
 
-//     testSame(
-//         renderToText(StudyState(TFCListDeck(tfcListAll.drop(2), false), 1)),
-//         "$aMN\n$studyCheck",
-//         "answer MN",
-//     )
-// }
+    testSame(
+        renderToText(StudyState(TFCListDeck(tfcListAll.drop(2), false), 1)),
+        "$aMN\n$studyCheck",
+        "answer MN",
+    )
+}
 
 // if study state is front returns back, if on back checks user input and
 // appropriately adds to num wrong and transitions to next cards front
@@ -966,44 +966,44 @@ fun transitionStudyState(
     }
 }
 
-// @EnabledTest
-// fun testTransitionStudyState() {
-//     testSame(
-//         transitionStudyState(StudyState(TFCListDeck(tfcListAll, true), 0), ""),
-//         StudyState(TFCListDeck(tfcListAll, false), 0),
-//         "front -> back",
-//     )
+@EnabledTest
+fun testTransitionStudyState() {
+    testSame(
+        transitionStudyState(StudyState(TFCListDeck(tfcListAll, true), 0), ""),
+        StudyState(TFCListDeck(tfcListAll, false), 0),
+        "front -> back",
+    )
 
-//     testSame(
-//         transitionStudyState(StudyState(TFCListDeck(tfcListAll, false), 0), "yes"),
-//         StudyState(TFCListDeck(tfcListAll.drop(1), true), 0),
-//         "back -> next front, correct",
-//     )
+    testSame(
+        transitionStudyState(StudyState(TFCListDeck(tfcListAll, false), 0), "yes"),
+        StudyState(TFCListDeck(tfcListAll.drop(1), true), 0),
+        "back -> next front, correct",
+    )
 
-//     testSame(
-//         transitionStudyState(StudyState(TFCListDeck(listOf(tfcJP, tfcCB), false), 0), "nope"),
-//         StudyState(TFCListDeck(listOf(tfcCB, tfcJP), true), 1),
-//         "back -> next front, incorrect",
-//     )
-// }
+    testSame(
+        transitionStudyState(StudyState(TFCListDeck(listOf(tfcJP, tfcCB), false), 0), "nope"),
+        StudyState(TFCListDeck(listOf(tfcCB, tfcJP), true), 1),
+        "back -> next front, incorrect",
+    )
+}
 
 // checks list size and if we should terminate react console
 fun isListEmpty(studyState: StudyState): Boolean = studyState.deckInterface.getSize() == 0
 
-// @EnabledTest
-// fun testIsListEmpty() {
-//     testSame(
-//         isListEmpty(StudyState(TFCListDeck(tfcListAll, false), 0)),
-//         false,
-//         "do not terminate",
-//     )
+@EnabledTest
+fun testIsListEmpty() {
+    testSame(
+        isListEmpty(StudyState(TFCListDeck(tfcListAll, false), 0)),
+        false,
+        "do not terminate",
+    )
 
-//     testSame(
-//         isListEmpty(StudyState(TFCListDeck(tfcListEmpty, true), 3)),
-//         true,
-//         "terminate",
-//     )
-// }
+    testSame(
+        isListEmpty(StudyState(TFCListDeck(tfcListEmpty, true), 3)),
+        true,
+        "terminate",
+    )
+}
 
 // takes in the IDeck interface, uses reactConsole to study through the deck
 // and returns StudyDeckResult, a summary of total questions and total attempts
@@ -1024,133 +1024,133 @@ fun studyDeck2(
     return StudyDeckResult(deck.getSize(), deck.getSize() + numWrong)
 }
 
-// @EnabledTest
-// fun testStudyDeck2() {
-//     // makes a captureResults-friendly function :)
-//     fun helpTest(chosenDeck: TFCListDeck): () -> StudyDeckResult {
-//         fun studiedDeck2(): StudyDeckResult {
-//             return studyDeck2(chosenDeck, ::isPositiveSimple)
-//         }
-//         return ::studiedDeck2
-//     }
+@EnabledTest
+fun testStudyDeck2() {
+    // makes a captureResults-friendly function :)
+    fun helpTest(chosenDeck: TFCListDeck): () -> StudyDeckResult {
+        fun studiedDeck2(): StudyDeckResult {
+            return studyDeck2(chosenDeck, ::isPositiveSimple)
+        }
+        return ::studiedDeck2
+    }
 
-//     val deckAllExample = TFCListDeck(tfcListAll, true)
-//     val deckOfOneExample = TFCListDeck(tfcListCB, true)
+    val deckAllExample = TFCListDeck(tfcListAll, true)
+    val deckOfOneExample = TFCListDeck(tfcListCB, true)
 
-//     testSame(
-//         captureResults(
-//             helpTest(deckAllExample),
-//             "",
-//             "yes",
-//             "",
-//             "yeah",
-//             "",
-//             "yup",
-//             "",
-//             "affirmative",
-//         ),
-//         CapturedResult(
-//             StudyDeckResult(4, 4),
-//             qJP,
-//             studyThink,
-//             aJP,
-//             studyCheck,
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             qMN,
-//             studyThink,
-//             aMN,
-//             studyCheck,
-//             qCmaj9,
-//             studyThink,
-//             aCmaj9,
-//             studyCheck,
-//             "",
-//             "Questions: 4, Attempts: 4"
-//         ),
-//         "all correct",
-//     )
+    testSame(
+        captureResults(
+            helpTest(deckAllExample),
+            "",
+            "yes",
+            "",
+            "yeah",
+            "",
+            "yup",
+            "",
+            "affirmative",
+        ),
+        CapturedResult(
+            StudyDeckResult(4, 4),
+            qJP,
+            studyThink,
+            aJP,
+            studyCheck,
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            qMN,
+            studyThink,
+            aMN,
+            studyCheck,
+            qCmaj9,
+            studyThink,
+            aCmaj9,
+            studyCheck,
+            "",
+            "Questions: 4, Attempts: 4"
+        ),
+        "all correct",
+    )
 
-//     testSame(
-//         captureResults(
-//             helpTest(deckAllExample),
-//             "",
-//             "nope",
-//             "aposidhasjdn (ignore)",
-//             "yeah",
-//             "",
-//             "yup",
-//             "",
-//             "affirmative",
-//             "",
-//             "yes",
-//         ),
-//         CapturedResult(
-//             StudyDeckResult(4, 5),
-//             qJP,
-//             studyThink,
-//             aJP,
-//             studyCheck,
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             qMN,
-//             studyThink,
-//             aMN,
-//             studyCheck,
-//             qCmaj9,
-//             studyThink,
-//             aCmaj9,
-//             studyCheck,
-//             qJP,
-//             studyThink,
-//             aJP,
-//             studyCheck,
-//             "",
-//             "Questions: 4, Attempts: 5"
-//         ),
-//         "cycle JP flashcard",
-//     )
+    testSame(
+        captureResults(
+            helpTest(deckAllExample),
+            "",
+            "nope",
+            "aposidhasjdn (ignore)",
+            "yeah",
+            "",
+            "yup",
+            "",
+            "affirmative",
+            "",
+            "yes",
+        ),
+        CapturedResult(
+            StudyDeckResult(4, 5),
+            qJP,
+            studyThink,
+            aJP,
+            studyCheck,
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            qMN,
+            studyThink,
+            aMN,
+            studyCheck,
+            qCmaj9,
+            studyThink,
+            aCmaj9,
+            studyCheck,
+            qJP,
+            studyThink,
+            aJP,
+            studyCheck,
+            "",
+            "Questions: 4, Attempts: 5"
+        ),
+        "cycle JP flashcard",
+    )
 
-//     testSame(
-//         captureResults(
-//             helpTest(deckOfOneExample),
-//             "",
-//             "no",
-//             "",
-//             "nope",
-//             "",
-//             "nahh",
-//             "",
-//             "yess",
-//         ),
-//         CapturedResult(
-//             StudyDeckResult(1, 4),
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             qCB,
-//             studyThink,
-//             aCB,
-//             studyCheck,
-//             "",
-//             "Questions: 1, Attempts: 4"
-//         ),
-//         "cycle cuba thrice (4 attempts)",
-//     )
-// }
+    testSame(
+        captureResults(
+            helpTest(deckOfOneExample),
+            "",
+            "no",
+            "",
+            "nope",
+            "",
+            "nahh",
+            "",
+            "yess",
+        ),
+        CapturedResult(
+            StudyDeckResult(1, 4),
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            qCB,
+            studyThink,
+            aCB,
+            studyCheck,
+            "",
+            "Questions: 1, Attempts: 4"
+        ),
+        "cycle cuba thrice (4 attempts)",
+    )
+}
 
 
 // some useful labels
@@ -1204,3 +1204,4 @@ fun main() {
 
 runEnabledTests(this)
 main()
+
